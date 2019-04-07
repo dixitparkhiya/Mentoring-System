@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Lobster|Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="/static/stylesheet.css">
+</head>
+<body>
+<div class="header-top">
+<nav class="navbar navbar-expand-sm bg-success navbar-dark">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Vibes</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="{% url 'student:home' %}">Home</a></li>
+      {% if user.is_authenticated %}
+      <li><a href="{% url 'student:upload' %}">Upload</a></li>
+      {% endif %}
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+
+      {% if user.is_authenticated %}
+      <li> <form action="{% url 'accounts:logout' %}" method="post">
+        {% csrf_token %}
+        <span class="glyphicon glyphicon-log-out"></span>
+        <input type="submit" value="Logout" class="logout">
+      </form> </li>
+      <!--<li><a href="{% url 'accounts:logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>-->
+      {% else %}
+      <li><a href="' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="{% url 'accounts:login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      {% endif %}
+
+    </ul>
+  </div>
+</nav></div>
+
+<div class="wrapper">
+    {% block content %}
+
+    {% endblock %}
+</div>
+
+</body>
+</html>

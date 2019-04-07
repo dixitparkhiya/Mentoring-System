@@ -1,0 +1,14 @@
+{% extends 'base_layout.html' %}
+{% load static from staticfiles %}
+{% block title %}
+Login Page
+{% endblock %}
+{% block content %}
+<h1>this is Login Page</h1>
+<form action="/accounts/login/" method="post">
+ {% csrf_token %}
+ {{ form }}
+ <input type="hidden" value="{{ request.GET.next }}">
+ <input type="submit" value="Login">
+</form>
+{% endblock %}
