@@ -11,6 +11,7 @@ app_name = 'student'
 urlpatterns = [
 
     re_path(r'^upload/$', views.upload, name="upload"),
+    re_path(r'^sms/$', views.send, name="sms"),
     re_path(r'^$',views.home, name="home"),
 ]
 

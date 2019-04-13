@@ -20,7 +20,8 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="{% url 'student:home' %}">Home</a></li>
       {% if user.is_authenticated %}
-      <li><a href="{% url 'student:upload' %}">Upload</a></li>
+      <li><a href="{% url 'student:upload' %}">Add Student</a></li>
+      <li><a href="{% url 'student:sms' %}">Send SMS</a></li>
       {% endif %}
     </ul>
     <ul class="nav navbar-nav navbar-right">
